@@ -37,6 +37,7 @@
         <module>order-service</module>
         <module>payment-service</module>
         <module>notification-service</module>
+        <module>common-events</module>
     </modules>
 
     <dependencyManagement>
