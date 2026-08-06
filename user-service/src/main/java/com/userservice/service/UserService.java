@@ -7,6 +7,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -18,9 +20,12 @@ public class UserService {
     }
 
     public User register(String username, String password) {
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(passwordEncoder.encode(password));
+        User user = new User(username, passwordEncoder.encode(password));
+        System.out.println(user + "USER");
         return this.userRepository.save(user);
+    }
+
+    public List<User> findAll() {
+        return this.userRepository.findAll();
     }
 }
